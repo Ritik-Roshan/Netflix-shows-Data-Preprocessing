@@ -1,2 +1,60 @@
- '1. What are missing values and how do you handle them?'
-### Missing values are simply blank spaces in your data — like when someone's name or the date of a movie release isn't recorded.
+1. What are missing values and how do you handle them?
+Ans - Missing values are simply blank spaces in your data — like when someone's name or the date of a movie release isn't recorded.
+      We handle them in a few smart ways:
+
+                     Fill them using .fillna() with something like "Unknown", 0, or even the mean/median of a column.
+                     Drop them using .dropna() if they’re not essential or are too messy to fix.
+                     Impute them statistically (like predicting the value based on other columns).
+
+2. How do you treat duplicate records?
+Ans - Duplicate records are like echo entries — the same row showing up more than once.
+      Here’s how we handle them:
+
+                     Use .drop_duplicates() to remove them.
+                     Sometimes you might group or aggregate instead, depending on context.
+
+3. Difference between .dropna() and .fillna() in Pandas?
+Ans - .dropna() = Remove rows (or columns) with missing values.
+
+      .fillna() = Replace missing values with something meaningful.
+
+4. What is outlier treatment and why is it important?
+Ans - Outliers are values that are way off the chart — like someone with 1200 years of age in a dataset!
+
+      You treat them by:
+
+                      Removing them if they’re data entry errors.
+                      Capping or flooring using IQR or z-scores.
+                      Transforming using log/scaling methods.
+
+5. Explain the process of standardizing data.
+Ans - Standardization means putting everything on the same scale or format so your analysis doesn’t go haywire.
+      
+      This includes:
+                      Lowercasing column names (First Name → first_name)
+                      Date format unification (MM-DD-YYYY → DD-MM-YYYY)
+                      Categorical consistency (usa, US, United States → United States)
+
+6. How do you handle inconsistent data formats (e.g., date/time)?
+Ans - We handle inconsisten date formats by using:
+                      
+                      pd.to_datetime() to convert all formats to a standard one.
+                      Then use .dt.strftime('%d-%m-%Y') to format it how you like.
+
+7. What are common data cleaning challenges?
+Ans - The commond data cleaning challenges include:
+
+                      Missing values in critical fields
+                      Inconsistent entries (e.g., typos, different spellings)
+                      Duplicates hiding in plain sight
+                      Outliers distorting analysis
+                      Mixed data types (text where numbers should be!)
+
+8. How can you check data quality?
+Ans - Data quality is like food freshness — you check before you consume.
+      By using :
+                     .info() — for column types and non-null counts
+                     .describe() — to look at stats like mean, min, max
+                     .isnull().sum() — to find missing values
+                     .duplicated().sum() — to count duplicate rows
+                     Visual tools like box plots for outliers
